@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Meme Generator Contest</title>
+  <link rel="icon" href="https://th.bing.com/th/id/R.7f836e2c5fb8af303d586323175034ee?rik=p1pkVUKr86P%2b1g&riu=http%3a%2f%2fwww.westernoffice.net%2fwordpress%2fwp-content%2fuploads%2fImages%2fSales%2fcontest.jpg&ehk=E0%2fyD3Pof3zbPihSIaVaTlIExIBJNy8kQm2QdGuKj1E%3d&risl=&pid=ImgRaw&r=0" type="image/jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .hamburger {
+    width: 40px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 20;
+    transition: transform 0.3s ease;
+}
+
+.bar {
+    width: 80%;
+    height: 6px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 250px;
+    height: 100vh;
+    background-color: #223;
+    color: white;
+    padding: 50px 20px 20px 20px;
+    transition: left 0.4s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.menu p {
+    margin: 20px 0;
+    color: #fff;
+    font-size: 1.2rem;   
+}
+
+#menu-toggle:checked + .hamburger .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 12px);
+}
+
+#menu-toggle:checked + .hamburger .bar:nth-child(2) {
+    transform: rotate(-45deg) translateY(-4.5px) translateX(-5px);
+    opacity: 0; 
+}
+
+#menu-toggle:checked + .hamburger .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -12px);
+}
+
+#menu-toggle:checked ~ .menu {
+    left: 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.5s ease;
+    z-index: 20;
+    text-align: center;
+}
+
+.overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+* {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+input[type="checkbox"] {
+    display: none;
+}
+@media (max-width: 600px) {
+    img {
+        width: 30vw; 
+        height: 30vw;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    img {
+        width: 10vw; 
+        height: 10vw;
+    }
+}
+
+    #exit-planets-info {
+      margin: 5px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color:rgb(0, 197, 16);
+      cursor: pointer;
+      width: 50px;
+    }
+    #exit-creator {
+      margin: 5px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color:rgb(0, 255, 13);
+      cursor: pointer;
+      width: 50px;
+    }
+  
+    img {
+    width: 20vw; 
+    height: 20vw; 
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+#creatorName {
+        color: white;
+        font-weight: bolder;
+    }
+</style>
+<body style="user-select: none;" class=" bg-gradient-to-br from-green-100 via-blue-100 to-purple-100">
+
+  
+  <header class="bg-gradient-to-r from-green-400 to-blue-500 text-white py-12">
+    <input type="checkbox" id="menu-toggle" />
+    <label class="hamburger" for="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </label>
+    <div class="menu">
+    <p id="planets-info-btn">APP Info</p>
+    <p id="creator-btn">Creators </p>
+</div>
+
+<div id="planets-info" class="overlay">
+    <p>
+      January Contest !
+
+    </p>
+    
+    <button id="exit-planets-info" class="exit">Exit</button>
+</div>
+
+<div id="creator-section" class="overlay">
+    <h2 id="creatorName">Anya </h2>
+    <img src="https://i.ibb.co/8MSCxMQ/baf77440-da1d-412b-90fa-2d3558157803.jpg" alt="baf77440-da1d-412b-90fa-2d3558157803" border="0">
+   
+    <button id="exit-creator" class="exit">Exit</button>
+</div>
+    <h1 class="text-4xl sm:text-5xl font-bold text-center">🎉 Custom Meme Generator Contest 🎉</h1>
+    <p class="text-lg sm:text-xl mt-4 text-center">Create the funniest memes and win exciting prizes!</p>
+  </header>
+
+  
+  <div class="container mx-auto mt-12 px-4 lg:px-8">
+    <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl max-w-4xl mx-auto space-y-8">
+
+      
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">How to Participate:</h2>
+        <div class="text-base sm:text-lg text-gray-700">
+          <ul class="list-inside list-disc space-y-3">
+            <li><strong>Step 1:</strong> Create code using HTML, CSS, and JavaScript for your meme generator.</li>
+            <li><strong>Step 2:</strong> Send your code in the comment box below (SoloLearn upload).</li>
+            <li><strong>Step 3:</strong> Off-topic codes will also be accepted!</li>
+          </ul>
+        </div>
+      </div>
+
+      
+      <div class="space-y-4">
+        <h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Contest Rules:</h3>
+        <div class="text-base sm:text-lg text-gray-700">
+          <ul class="list-inside list-disc space-y-3">
+            <li>AI-generated code will be disqualified (No AI assistance allowed).</li>
+            <li>Deadline for submissions is <strong>January 20, 2025</strong>.</li>
+            <li>Contest results will be announced on <strong>January 25, 2025</strong>.</li>
+            <li>Inappropriate or offensive content will be disqualified.</li>
+          </ul>
+        </div>
+      </div>
+
+      
+      <div class="space-y-8">
+        <h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Meet the Judges:</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          
+          <!-- Judge 1: Shashikant -->
+          <div class="flex flex-col items-center">
+            <img src="https://i.ibb.co/8MSCxMQ/baf77440-da1d-412b-90fa-2d3558157803.jpg" loading="lazy" alt="Shashikant's Profile" class="w-32 h-32 rounded-full mb-4">
+            <h4 class="text-lg font-semibold text-gray-800">Anya</h4>
+            
+          </div>
+
+          <!-- Judge 2: Anya (Me) -->
+          <div class="flex flex-col items-center">
+            <img src="https://blob.sololearn.com/avatars/8569709a-04d9-4da6-a84e-4be4ebc7d8e8.jpg" loading="lazy" alt="Anya's Profile" class="w-32 h-32 rounded-full mb-4">
+            <h4 class="text-lg font-semibold text-gray-800">Shahikant</h4>
+            
+          </div>
+
+          <!-- Judge 3: Bhavik -->
+          <div class="flex flex-col items-center">
+            <img src="https://blob.sololearn.com/avatars/dccaded0-4db3-42d3-b533-44b67cd54aa0.jpg"loading="lazy" alt="Bhavik's Profile" class="w-32 h-32 rounded-full mb-4">
+            
+            <h4 class="text-lg font-semibold text-gray-800">Bhavik</h4>
+            
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+<script>
+     const menuToggle = document.getElementById("menu-toggle");
+    
+    function closeActiveSections() {
+        const activeSections = document.querySelectorAll('.overlay.active');
+        activeSections.forEach(section => {
+            section.classList.remove('active');
+        });
+    }
+
+    document.getElementById("planets-info-btn").addEventListener("click", function() {
+        closeActiveSections();
+        menuToggle.checked = false;
+        document.getElementById("planets-info").classList.add("active");
+    });
+
+    document.getElementById("creator-btn").addEventListener("click", function() {
+        closeActiveSections();
+        menuToggle.checked = false;
+        document.getElementById("creator-section").classList.add("active");
+    });
+
+    document.getElementById("exit-planets-info").addEventListener("click", function() {
+        document.getElementById("planets-info").classList.remove("active");
+    });
+
+    document.getElementById("exit-creator").addEventListener("click", function() {
+        document.getElementById("creator-section").classList.remove("active");
+    });
+
+</script>
+</body>
+</html>
